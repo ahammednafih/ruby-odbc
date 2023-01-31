@@ -4,7 +4,7 @@ require 'date'
 
 Gem::Specification.new do |s|
   s.name = "ruby-odbc"
-  s.version = "1.0.0"
+  s.version = "1.1.0"
   s.date = Date.today.to_s
   s.author = "Christian Werner"
   s.email = "chw @nospam@ ch-werner.de"
