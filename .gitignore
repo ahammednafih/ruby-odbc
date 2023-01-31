@@ -1,0 +1,12 @@
+# ext folder
+ext/*
+!ext/extconf.rb
+!ext/odbc.c
+!ext/init.c
+!ext/utf8/extconf.rb
+!ext/utf8/odbc.c
+!ext/utf8/init.c
+
+# lib folder
+lib/*
+!lib/cqgen.rb

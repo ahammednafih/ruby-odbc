@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'date'
-spec = Gem::Specification.new do |s|
+
+Gem::Specification.new do |s|
   s.name = "ruby-odbc"
   s.version = "0.999991"
   s.date = Date.today.to_s
