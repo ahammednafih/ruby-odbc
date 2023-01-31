@@ -1844,7 +1844,7 @@ set_err(const char *msg, int warn)
     rb_enc_associate(v, rb_enc);
 #endif
     a = rb_ary_new2(1);
-    rb_ary_push(a, rb_obj_taint(v));
+    rb_ary_push(a, v);
     CVAR_SET(Cobj, warn ? IDatatinfo : IDataterror, a);
     return STR2CSTR(v);
 }
@@ -1923,7 +1923,7 @@ get_err_or_info(SQLHENV henv, SQLHDBC hdbc, SQLHSTMT hstmt, int isinfo)
 		v0 = v;
 		a = rb_ary_new();
 	    }
-	    rb_ary_push(a, rb_obj_taint(v));
+	    rb_ary_push(a, v);
 	    tracemsg(1, fprintf(stderr, "  | %s\n", STR2CSTR(v)););
 	}
     }
@@ -2019,7 +2019,7 @@ get_installer_err()
 		v0 = v;
 		a = rb_ary_new();
 	    }
-	    rb_ary_push(a, rb_obj_taint(v));
+	    rb_ary_push(a, v);
 	    tracemsg(1, fprintf(stderr, "  | %s\n", STR2CSTR(v)););
 	}
     }
@@ -2273,7 +2273,7 @@ dbc_raise(VALUE self, VALUE msg)
     buf[SQL_MAX_MESSAGE_LENGTH] = '\0';
     v = rb_str_new2(buf);
     a = rb_ary_new2(1);
-    rb_ary_push(a, rb_obj_taint(v));
+    rb_ary_push(a, v);
     CVAR_SET(Cobj, IDataterror, a);
     rb_raise(Cerror, "%s", buf);
     return Qnil;
@@ -6840,7 +6840,7 @@ stmt_columns(int argc, VALUE *argv, VALUE self)
 
 		sprintf(buf, "#%d", i);
 		name = rb_str_dup(name);
-		name = rb_obj_taint(rb_str_cat2(name, buf));
+		name = rb_str_cat2(name, buf);
 	    }
 	    rb_hash_aset(res, name, obj);
 	}
